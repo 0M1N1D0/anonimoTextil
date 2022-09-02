@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import login, logout # para el loginpage
+
 from homepage.urls import homepage_urlpatterns
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('homepage/', include(homepage_urlpatterns)),
+    path("cuentas/", include("django.contrib.auth.urls")), # ruta para el login 
+    path('', include(homepage_urlpatterns)),
 ]
